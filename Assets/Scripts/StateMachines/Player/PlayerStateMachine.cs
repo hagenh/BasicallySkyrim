@@ -3,11 +3,11 @@ using UnityEngine;
 [RequireComponent(typeof(InputReader))]
 [RequireComponent(typeof(Animator))]
 [RequireComponent(typeof(CharacterController))]
-[RequireComponent(typeof(PlayerVitals))]
+[RequireComponent(typeof(Vitals))]
 public class PlayerStateMachine : StateMachine
 {
     public Vector3 Velocity;
-    public float MovementSpeed { get; private set; } = 3f;
+    public float MovementSpeed { get; private set; } = 5f;
     public float JumpForce { get; private set; } = 4f;
     public Vector3 KnockbackForce { get; private set; }
     public float LookRotationDampFactor { get; private set; } = 10f;
@@ -15,11 +15,13 @@ public class PlayerStateMachine : StateMachine
     public InputReader InputReader { get; private set; }
     public Animator Animator { get; private set; }
     [field: SerializeField] public CharacterController Controller { get; private set; }
-    public PlayerVitals PlayerVitals { get; private set; }
+    public Vitals Vitals { get; private set; }
     public Interactable focus;
     [field: SerializeField] public Targeter Targeter { get; private set; }
     [field: SerializeField] public ForceReciever ForceReciever { get; private set; }
     [field: SerializeField] public Attack[] Attacks { get; private set; }
+    [field: SerializeField] public WeaponDamage Weapon{ get; private set; }
+
 
     private void Start()
     {
@@ -28,7 +30,7 @@ public class PlayerStateMachine : StateMachine
         InputReader = GetComponent<InputReader>();
         Animator = GetComponent<Animator>();
         Controller = GetComponent<CharacterController>();
-        PlayerVitals = GetComponent<PlayerVitals>();
+        Vitals = GetComponent<Vitals>();
         Targeter = GetComponentInChildren<Targeter>();
 
         SwitchState(new PlayerMoveState(this));

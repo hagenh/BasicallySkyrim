@@ -318,7 +318,7 @@ MonoBehaviour:
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
   m_Follow: {fileID: 0}
-  m_AnimatedTarget: {fileID: 0}
+  m_AnimatedTarget: {fileID: 2293230098747609820}
   m_LayerIndex: 0
   m_ShowDebugText: 0
   m_ChildCameras:
@@ -1195,6 +1195,26 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 5672746857469580024}
     m_Modifications:
+    - target: {fileID: 1773341645, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<ForceTime>k__BackingField
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773341645, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<ForceTime>k__BackingField
+      value: 0.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773341645, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[0].<ComboAttackTime>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773341645, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[1].<ComboAttackTime>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1773341645, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+      propertyPath: <Attacks>k__BackingField.Array.data[2].<ComboAttackTime>k__BackingField
+      value: 0.6
+      objectReference: {fileID: 0}
     - target: {fileID: 2027860881, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
       propertyPath: cineTargetGroup
       value: 
@@ -1249,6 +1269,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+--- !u!95 &2293230098747609820 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 4607067219253613678, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
+  m_PrefabInstance: {fileID: 2322915839019353778}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2322915837263885603 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2027860881, guid: ef0b41556d76e9047bf7b204483ee688, type: 3}
@@ -1379,40 +1404,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &5672746858052429885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789803499116717567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 68fb987161cd9fd46a512e6b6e91315b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Velocity: {x: 0, y: 0, z: 0}
-  <Controller>k__BackingField: {fileID: 0}
-  focus: {fileID: 0}
-  <Targeter>k__BackingField: {fileID: 2322915837263885603}
-  <ForceReciever>k__BackingField: {fileID: 0}
-  <Attacks>k__BackingField: []
-  Health: 100
-  playerState: {fileID: 5672746858052429873}
---- !u!114 &5672746858052429886
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4789803499116717567}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7bbf9adea7731dc499554933ffa9d8e5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MouseDelta: {x: 0, y: 0}
-  MoveComposite: {x: 0, y: 0}
 --- !u!114 &5672746858052429873
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1422,33 @@ MonoBehaviour:
   <Targeter>k__BackingField: {fileID: 2322915837263885603}
   <ForceReciever>k__BackingField: {fileID: 0}
   <Attacks>k__BackingField: []
+--- !u!114 &5672746858052429885
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789803499116717567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68fb987161cd9fd46a512e6b6e91315b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Health: 100
+--- !u!114 &5672746858052429886
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4789803499116717567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7bbf9adea7731dc499554933ffa9d8e5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MouseDelta: {x: 0, y: 0}
+  MoveComposite: {x: 0, y: 0}
 --- !u!4 &5274590697942826821 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 5ac858a8e9708bf45ab297fb1366e6ce, type: 3}

@@ -77,14 +77,14 @@ AnimatorStateMachine:
     m_State: {fileID: -5399848075839407714}
     m_Position: {x: 280, y: 180, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -5775413245241955538}
-    m_Position: {x: 280, y: 430, z: 0}
+    m_State: {fileID: -4247711414476861885}
+    m_Position: {x: 70, y: 310, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: 7073748046169340570}
-    m_Position: {x: 280, y: 370, z: 0}
+    m_State: {fileID: 2698279964064383660}
+    m_Position: {x: 70, y: 370, z: 0}
   - serializedVersion: 1
-    m_State: {fileID: -2803672432018121588}
-    m_Position: {x: 280, y: 310, z: 0}
+    m_State: {fileID: 2695673466173111615}
+    m_Position: {x: 70, y: 430, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions: []
   m_EntryTransitions: []
@@ -152,32 +152,6 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &-5775413245241955538
-AnimatorState:
-  serializedVersion: 6
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: Elbow Uppercut
-  m_Speed: 1.5
-  m_CycleOffset: 0
-  m_Transitions: []
-  m_StateMachineBehaviours: []
-  m_Position: {x: 50, y: 50, z: 0}
-  m_IKOnFeet: 0
-  m_WriteDefaultValues: 1
-  m_Mirror: 0
-  m_SpeedParameterActive: 0
-  m_MirrorParameterActive: 0
-  m_CycleOffsetParameterActive: 0
-  m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: c01764c30bf0298498c1e4ac39c88229, type: 2}
-  m_Tag: Attack
-  m_SpeedParameter: 
-  m_MirrorParameter: 
-  m_CycleOffsetParameter: 
-  m_TimeParameter: 
 --- !u!1102 &-5399848075839407714
 AnimatorState:
   serializedVersion: 6
@@ -219,14 +193,14 @@ BlendTree:
   m_UseAutomaticThresholds: 1
   m_NormalizedBlendValues: 0
   m_BlendType: 0
---- !u!1102 &-2803672432018121588
+--- !u!1102 &-4247711414476861885
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Uppercut
+  m_Name: Attack1
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
@@ -239,7 +213,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: b3433034292ba7e41b0656f91f03325d, type: 2}
+  m_Motion: {fileID: 7400000, guid: 044b87a516c023343a8ae071e72520c3, type: 2}
   m_Tag: Attack
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -299,14 +273,14 @@ AnimatorState:
   m_MirrorParameter: 
   m_CycleOffsetParameter: 
   m_TimeParameter: 
---- !u!1102 &7073748046169340570
+--- !u!1102 &2695673466173111615
 AnimatorState:
   serializedVersion: 6
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Kick
+  m_Name: Attack3
   m_Speed: 1.5
   m_CycleOffset: 0
   m_Transitions: []
@@ -319,7 +293,33 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: caedfb6952be8d14f932bd481a7f9c21, type: 2}
+  m_Motion: {fileID: 7400000, guid: 87ac27b6142b23541b9fa1d4c187ba44, type: 2}
+  m_Tag: Attack
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
+--- !u!1102 &2698279964064383660
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Attack2
+  m_Speed: 1.5
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: 7400000, guid: 568826cf4c2a2d443b33167562a6c3a3, type: 2}
   m_Tag: Attack
   m_SpeedParameter: 
   m_MirrorParameter: 

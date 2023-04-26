@@ -24,12 +24,6 @@ public class PlayerMoveState : PlayerBaseState
     public override void Tick()
     {
 
-        if (stateMachine.PlayerVitals.Health <= 0f)
-        {
-            stateMachine.SwitchState(new PlayerDeadState(stateMachine));
-            return;
-        }
-
         if (stateMachine.InputReader.IsAttacking)
         {
             stateMachine.SwitchState(new PlayerAttackState(stateMachine, 0));
@@ -67,12 +61,8 @@ public class PlayerMoveState : PlayerBaseState
 
     private void SwitchToTargetingState()
     {
-        Debug.Log("Targeter is null : " + (stateMachine.Targeter == null));
-        Debug.Log("stateMachine  is null : " + (stateMachine == null));
         if (stateMachine.Targeter.SelectTarget()) { 
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine)); 
         }
-
-        Debug.Log("I will survive");
     }
 }

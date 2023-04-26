@@ -40,7 +40,7 @@ public abstract class PlayerBaseState : State
 
     protected void Move()
     {
-        stateMachine.Controller.Move(stateMachine.Velocity * Time.deltaTime);
+        stateMachine.Controller.Move((stateMachine.Velocity /*+ stateMachine.ForceReciever.Forces*/) * Time.deltaTime);
     }
 
     public void CheckForInteractable()

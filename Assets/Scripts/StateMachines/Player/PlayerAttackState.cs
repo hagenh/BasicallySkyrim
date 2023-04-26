@@ -6,7 +6,9 @@ using UnityEngine;
 public class PlayerAttackState : PlayerBaseState
 {
     private Attack Attack;
+
     private bool alreadyAppliedForce;
+    private float previousFrameTime;
 
     public PlayerAttackState(PlayerStateMachine stateMachine, int AttackIndex) : base(stateMachine) 
     {
@@ -15,8 +17,8 @@ public class PlayerAttackState : PlayerBaseState
 
     public override void Enter()
     {
+        stateMachine.Weapon.SetAttack(Attack.Damage);
         stateMachine.Animator.CrossFadeInFixedTime(Attack.AnimationName, Attack.TransitionDuration);
-        Debug.Log("Attack: " + Attack.AnimationName);
     }
 
     public override void Tick()
@@ -27,9 +29,12 @@ public class PlayerAttackState : PlayerBaseState
 
         float normalizedTime = GetNormalizedAnimationTime();
 
-        if(normalizedTime < 1f)
+        if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
         {
-            if (normalizedTime >= Attack.ForceTime) { TryApplyForce(); }
+            if (normalizedTime >= Attack.ForceTime)
+            {
+                TryApplyForce();
+            }
 
             if (stateMachine.InputReader.IsAttacking)
             {
@@ -38,8 +43,18 @@ public class PlayerAttackState : PlayerBaseState
         }
         else
         {
-            // go back to moveState
+            if (stateMachine.Targeter.currentTarget != null)
+            {
+                stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+            }
+            else
+            {
+                stateMachine.SwitchState(new PlayerMoveState(stateMachine));
+            }
         }
+
+        previousFrameTime = normalizedTime;
+
     }
 
     public override void Exit()
@@ -51,7 +66,7 @@ public class PlayerAttackState : PlayerBaseState
     {
         if(Attack.ComboStateIndex == -1) { return; }
 
-        if(normalizedTime < Attack.ComboAttackTime) { return; } 
+        if(normalizedTime < Attack.ComboAttackTime) {  return; }
 
         stateMachine.SwitchState(new PlayerAttackState(stateMachine, Attack.ComboStateIndex));
     }
@@ -59,28 +74,28 @@ public class PlayerAttackState : PlayerBaseState
     private float GetNormalizedAnimationTime()
     {
         AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+        AnimatorStateInfo nextInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0);
 
-        if(stateMachine.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
+        if (stateMachine.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
         {
             return nextInfo.normalizedTime;
         }
-        else if(!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
+        else if (!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
         {
             return currentInfo.normalizedTime;
         }
         else
         {
-            return 0;
+            return 0f;
         }
+
     }
 
     private void TryApplyForce()
     {
         if(alreadyAppliedForce) { return; };
 
-        Debug.Log("stateMachine and Attack: " + stateMachine.transform.forward + ", " + Attack.Force);
-        stateMachine.ForceReciever.AddForce(stateMachine.transform.forward * Attack.Force);
+        stateMachine.ForceReciever.AddForce(stateMachine, stateMachine.transform.forward * Attack.Force);
 
         alreadyAppliedForce = true;
     }

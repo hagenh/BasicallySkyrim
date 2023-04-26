@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 199671730074a8648979cf70bfb496ea
+guid: f35df7b87a226f048bfbdd02391bcc16
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -29,66 +29,7 @@ ModelImporter:
     animationPositionError: 0.5
     animationScaleError: 0.5
     animationWrapMode: 0
-    extraExposedTransformPaths:
-    - Root
-    - Root/Hips
-    - Root/Hips/Item_CoinBag
-    - Root/Hips/Item_Dagger
-    - Root/Hips/Item_Pouch
-    - Root/Hips/Item_SwordSheath
-    - Root/Hips/Item_WaterBladder_01
-    - Root/Hips/Item_WaterCanteen
-    - Root/Hips/Spine_01
-    - Root/Hips/Spine_01/Spine_02
-    - Root/Hips/Spine_01/Spine_02/Spine_03
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Finger_01
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Finger_01/Finger_02
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Finger_01/Finger_02/Finger_03
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Finger_01/Finger_02/Finger_03/Finger_04
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/IndexFinger_01
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/IndexFinger_01/IndexFinger_02
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/IndexFinger_01/IndexFinger_02/IndexFinger_03
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/IndexFinger_01/IndexFinger_02/IndexFinger_03/IndexFinger_04
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Thumb_01
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Thumb_01/Thumb_02
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Elbow_L/Hand_L/Thumb_01/Thumb_02/Thumb_03
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_L/Shoulder_L/Item_WarriorSholderArmor_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Item_WarriorSholderArmor
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Finger_01_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Finger_01_1/Finger_02_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Finger_01_1/Finger_02_1/Finger_03_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Finger_01_1/Finger_02_1/Finger_03_1/Finger_04_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/IndexFinger_01_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/IndexFinger_01_1/IndexFinger_02_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/IndexFinger_01_1/IndexFinger_02_1/IndexFinger_03_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/IndexFinger_01_1/IndexFinger_02_1/IndexFinger_03_1/IndexFinger_04_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Thumb_01_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Thumb_01_1/Thumb_02_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Clavicle_R/Shoulder_R/Elbow_R/Hand_R/Thumb_01_1/Thumb_02_1/Thumb_03_1
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Item_Sword
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Item_SwordHolder
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Neck
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head/Eyebrows
-    - Root/Hips/Spine_01/Spine_02/Spine_03/Neck/Head/Eyes
-    - Root/Hips/UpperLeg_L
-    - Root/Hips/UpperLeg_L/LowerLeg_L
-    - Root/Hips/UpperLeg_L/LowerLeg_L/Ankle_L
-    - Root/Hips/UpperLeg_L/LowerLeg_L/Ankle_L/Ball_L
-    - Root/Hips/UpperLeg_L/LowerLeg_L/Ankle_L/Ball_L/Toes_L
-    - Root/Hips/UpperLeg_R
-    - Root/Hips/UpperLeg_R/LowerLeg_R
-    - Root/Hips/UpperLeg_R/LowerLeg_R/Ankle_R
-    - Root/Hips/UpperLeg_R/LowerLeg_R/Ankle_R/Ball_R
-    - Root/Hips/UpperLeg_R/LowerLeg_R/Ankle_R/Ball_R/Toes_R
+    extraExposedTransformPaths: []
     extraUserProperties: []
     clipAnimations: []
     isReadable: 0
@@ -134,8 +75,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 71feffef5dd9feb43bbc72fac92d56ab
+  referencedClips: []
   importAnimation: 1
   humanDescription:
     serializedVersion: 3
@@ -477,13 +417,13 @@ ModelImporter:
         length: 0
         modified: 0
     skeleton:
-    - name: Character_Knight 1(Clone)
+    - name: Character_Viking 1(Clone)
       parentName: 
       position: {x: 0.00000063633183, y: 0.0029353332, z: 0.017929194}
       rotation: {x: 7.4472316e-19, y: -0.00000001160481, z: 0.00000039360407, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: Root
-      parentName: Character_Knight 1(Clone)
+      parentName: Character_Viking 1(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
@@ -789,11 +729,11 @@ ModelImporter:
     hasTranslationDoF: 0
     hasExtraRoot: 0
     skeletonHasParents: 1
-  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  lastHumanDescriptionAvatarSource: {fileID: 9000000, guid: c1bc1128385b7e14da9ea9466f6df8f3, type: 3}
   autoGenerateAvatarMappingIfUnspecified: 1
   animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 1
+  avatarSetup: 2
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   remapMaterialsIfMaterialImportModeIsNone: 0
   additionalBone: 0

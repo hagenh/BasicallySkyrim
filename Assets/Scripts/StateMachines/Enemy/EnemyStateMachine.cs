@@ -32,9 +32,5 @@ public class EnemyStateMachine : StateMachine
         Gizmos.color = Color.yellow;
         Gizmos.DrawLine(transform.position, transform.position + leftEdge);
         Gizmos.DrawLine(transform.position, transform.position + rightEdge);
-
-        // Draw a circle at the transform's position with a radius of 5f
-        Gizmos.DrawWireSphere(transform.position, 1f);
-
     }
 }

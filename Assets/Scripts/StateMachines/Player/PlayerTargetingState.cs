@@ -13,7 +13,6 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
 
         stateMachine.InputReader.OnTargetCancelPerformed += SwitchToMoveState;
-
     }
 
     public override void Tick()

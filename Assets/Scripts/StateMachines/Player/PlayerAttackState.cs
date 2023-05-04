@@ -24,9 +24,10 @@ public class PlayerAttackState : PlayerBaseState
     public override void Tick()
     {
         ApplyGravity();
-        Move();
+        CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceTargetDirection();
-
+        Move();
+        
         float normalizedTime = GetNormalizedAnimationTime();
 
         if (normalizedTime >= previousFrameTime && normalizedTime < 1f)

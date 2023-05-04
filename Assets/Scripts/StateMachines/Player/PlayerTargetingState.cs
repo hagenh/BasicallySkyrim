@@ -13,6 +13,8 @@ public class PlayerTargetingState : PlayerBaseState
         stateMachine.Animator.CrossFadeInFixedTime(TargetingBlendTreeHash, CrossFadeDuration);
 
         stateMachine.InputReader.OnTargetCancelPerformed += SwitchToMoveState;
+        stateMachine.InputReader.OnCrouchPerformed += SwitchToMoveState;
+        stateMachine.InputReader.OnJumpPerformed += SwitchToJumpState;
     }
 
     public override void Tick()
@@ -28,7 +30,7 @@ public class PlayerTargetingState : PlayerBaseState
             return;
         }
 
-        CalculateMoveDirection();
+        CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceTargetDirection();
         Move();
     }
@@ -36,6 +38,8 @@ public class PlayerTargetingState : PlayerBaseState
     public override void Exit()
     {
         stateMachine.InputReader.OnTargetCancelPerformed -= SwitchToMoveState;
+        stateMachine.InputReader.OnCrouchPerformed -= SwitchToMoveState;
+        stateMachine.InputReader.OnJumpPerformed -= SwitchToJumpState;
     }
 
     private void SwitchToMoveState()

@@ -19,6 +19,7 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine.InputReader.OnJumpPerformed += SwitchToJumpState;
         stateMachine.InputReader.OnInteractPerformed += CheckForInteractable;
         stateMachine.InputReader.OnTargetPerformed += SwitchToTargetingState;
+        stateMachine.InputReader.OnCrouchPerformed += SwitchToCrouchState;
     }
 
     public override void Tick()
@@ -35,7 +36,7 @@ public class PlayerMoveState : PlayerBaseState
             stateMachine.SwitchState(new PlayerFallState(stateMachine));
         }
 
-        CalculateMoveDirection();
+        CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceMoveDirection();
         Move();
 
@@ -49,20 +50,4 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine.InputReader.OnTargetPerformed -= SwitchToTargetingState;
     }
 
-    private void SwitchToJumpState()
-    {
-        stateMachine.SwitchState(new PlayerJumpState(stateMachine));
-    }
-
-    private void SwitchToInteractState()
-    {
-        stateMachine.SwitchState(new PlayerInteractState(stateMachine));
-    }
-
-    private void SwitchToTargetingState()
-    {
-        if (stateMachine.Targeter.SelectTarget()) { 
-            stateMachine.SwitchState(new PlayerTargetingState(stateMachine)); 
-        }
-    }
 }

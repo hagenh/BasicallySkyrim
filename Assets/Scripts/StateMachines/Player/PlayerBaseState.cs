@@ -9,15 +9,15 @@ public abstract class PlayerBaseState : State
         this.stateMachine = stateMachine;
     }
 
-    protected void CalculateMoveDirection()
+    protected void CalculateMoveDirection(float moveSpeed)
     {
         Vector3 cameraForward = new(stateMachine.MainCamera.forward.x, 0, stateMachine.MainCamera.forward.z);
         Vector3 cameraRight = new(stateMachine.MainCamera.right.x, 0, stateMachine.MainCamera.right.z);
 
         Vector3 moveDirection = cameraForward.normalized * stateMachine.InputReader.MoveComposite.y + cameraRight.normalized * stateMachine.InputReader.MoveComposite.x;
 
-        stateMachine.Velocity.x = moveDirection.x * stateMachine.MovementSpeed;
-        stateMachine.Velocity.z = moveDirection.z * stateMachine.MovementSpeed;
+        stateMachine.Velocity.x = moveDirection.x * moveSpeed;
+        stateMachine.Velocity.z = moveDirection.z * moveSpeed;
     }
 
     protected void FaceMoveDirection()
@@ -40,7 +40,7 @@ public abstract class PlayerBaseState : State
 
     protected void Move()
     {
-        stateMachine.Controller.Move((stateMachine.Velocity /*+ stateMachine.ForceReciever.Forces*/) * Time.deltaTime);
+        stateMachine.Controller.Move((stateMachine.Velocity + stateMachine.ForceReciever.Forces) * Time.deltaTime);
     }
 
     public void CheckForInteractable()
@@ -95,5 +95,28 @@ public abstract class PlayerBaseState : State
         if (faceDirection == Vector3.zero) {  return; }
 
         stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, Quaternion.LookRotation(faceDirection), stateMachine.LookRotationDampFactor * Time.deltaTime);
+    }
+
+    public void SwitchToCrouchState()
+    {
+        stateMachine.SwitchState(new PlayerCrouchState(stateMachine));
+    }
+
+    public void SwitchToJumpState()
+    {
+        stateMachine.SwitchState(new PlayerJumpState(stateMachine));
+    }
+
+    public void SwitchToInteractState()
+    {
+        stateMachine.SwitchState(new PlayerInteractState(stateMachine));
+    }
+
+    public void SwitchToTargetingState()
+    {
+        if (stateMachine.Targeter.SelectTarget())
+        {
+            stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
+        }
     }
 }

@@ -11,6 +11,7 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
     public Action OnInteractPerformed;
     public Action OnTargetPerformed;
     public Action OnTargetCancelPerformed;
+    public Action OnCrouchPerformed;
 
     public bool IsAttacking { get; private set; }
 
@@ -84,5 +85,13 @@ public class InputReader : MonoBehaviour, Controls.IPlayerActions
         {
             IsAttacking = false;
         }
+    }
+
+    public void OnCrouch(InputAction.CallbackContext context)
+    {
+        if (!context.performed)
+            return;
+
+        OnCrouchPerformed?.Invoke();
     }
 }

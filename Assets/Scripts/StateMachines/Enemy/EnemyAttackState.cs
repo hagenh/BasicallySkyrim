@@ -8,47 +8,55 @@ public class EnemyAttackState : EnemyBaseState
     public delegate void PlayerIsAttacked();
     public static PlayerIsAttacked playerIsAttackedCallBack;
 
-    Transform player;
-    float attackRange = 1f;
-    int timeBetweenAttacks = 3;
-    float attackTimer;
+    private Attack Attack;
+    private bool hasPlayedAnimation = false;
 
-    public EnemyAttackState(EnemyStateMachine stateMachine) : base(stateMachine) { }
+    public EnemyAttackState(EnemyStateMachine stateMachine, int AttackIndex) : base(stateMachine) 
+    {
+        Attack = stateMachine.Attacks[AttackIndex];
+    }
 
     public override void Enter()
     {
-        
+        stateMachine.Weapon.SetAttack(Attack.Damage);
     }
 
     public override void Tick()
     {
+        if (CheckForDeath()) { stateMachine.SwitchState(new EnemyDeathState(stateMachine)); return; }
         ApplyGravity();
 
-        // Rotate towards the player
-        Vector3 directionToPlayer = stateMachine.player.transform.position - stateMachine.transform.position;
-        Quaternion lookRotation = Quaternion.LookRotation(directionToPlayer);
-        stateMachine.transform.rotation = Quaternion.Slerp(stateMachine.transform.rotation, lookRotation, Time.deltaTime * stateMachine.RotationSpeed);
-
-        // Move towards the player
-        if(Vector3.Distance(stateMachine.transform.position, stateMachine.player.transform.position) > attackRange)
+        Debug.Log("Distance: " + Vector3.Distance(stateMachine.transform.position, stateMachine.player.transform.position));
+        if (Vector3.Distance(stateMachine.transform.position, stateMachine.player.transform.position) <= Attack.AttackRange)
         {
-            stateMachine.transform.position += stateMachine.MovementSpeed * Time.deltaTime * stateMachine.transform.forward;
-            return;
-        }
-        
-        // Remove health from the player if attackTimer is >= timeBetweenAttacks
-        if(attackTimer >= timeBetweenAttacks)
-        {
-            // Attack
-            playerIsAttackedCallBack?.Invoke();
-            attackTimer = 0;
+            if (!hasPlayedAnimation)
+            {
+                Debug.Log("Attempting to run Attack animation");
+                stateMachine.Animator.CrossFadeInFixedTime(Attack.AnimationName, Attack.TransitionDuration);
+                hasPlayedAnimation = true;
+            }
         }
         else
         {
-            attackTimer += Time.deltaTime;
+            Vector3 directionToTarget = stateMachine.player.transform.position - stateMachine.navMeshAgent.transform.position;
+            Vector3 normalizedDirection = directionToTarget.normalized;
+
+            Vector3 finalPosition = stateMachine.player.transform.position + (normalizedDirection * Attack.AttackRange);
+            stateMachine.navMeshAgent.SetDestination(finalPosition);
         }
 
+        if (stateMachine.Animator.GetCurrentAnimatorStateInfo(0).IsName(Attack.AnimationName) && stateMachine.Animator.GetCurrentAnimatorStateInfo(0).normalizedTime >= 1.0f)
+        {
+            if (Vector3.Distance(stateMachine.transform.position, stateMachine.player.transform.position) < 2f)
+            {
+                Vector3 pos = stateMachine.transform.position + (-stateMachine.transform.forward * 2);
+                stateMachine.navMeshAgent.SetDestination(pos);
+                Debug.Log("Moved backwards enough!");
+                return;
+            }
 
+            stateMachine.SwitchState(new EnemyChaseState(stateMachine));
+        }
     }
 
     public override void Exit() { }

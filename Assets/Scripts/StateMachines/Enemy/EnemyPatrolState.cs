@@ -6,13 +6,18 @@ using UnityEngine;
 public class EnemyPatrolState : EnemyBaseState
 {
     public Transform[] wayPoints;
+
     private int currentWayPointIndex = 0;
     private float shouldWaitProbability = 6;
+
+    private readonly int WalkHash = Animator.StringToHash("Walk");
 
     public EnemyPatrolState(EnemyStateMachine stateMachine) : base(stateMachine) { }
 
     public override void Enter()
     {
+        stateMachine.Animator.CrossFadeInFixedTime(WalkHash, 0.1f);
+
         wayPoints = new Transform[10] {
         GameObject.Find("WayPoint1").transform,
         GameObject.Find("WayPoint2").transform,
@@ -31,6 +36,7 @@ public class EnemyPatrolState : EnemyBaseState
 
     public override void Tick()
     {
+        if(CheckForDeath()) { stateMachine.SwitchState(new EnemyDeathState(stateMachine)); return; }
         ApplyGravity();
         
         Vector3 directionToPlayer = stateMachine.player.transform.position + Vector3.up - stateMachine.transform.position;
@@ -42,7 +48,7 @@ public class EnemyPatrolState : EnemyBaseState
             {
                 if (hit.transform == stateMachine.player.transform)
                 {
-                    stateMachine.SwitchState(new EnemyAttackState(stateMachine));
+                    stateMachine.SwitchState(new EnemyChaseState(stateMachine));
                 }
             }
         }

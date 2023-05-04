@@ -54,4 +54,10 @@ public abstract class EnemyBaseState : State
 
         return closestWayPointIndex;
     }
+
+    public bool CheckForDeath()
+    {
+        if (stateMachine.Vitals.health <= 0) { return true; }
+        return false;
+    }
 }

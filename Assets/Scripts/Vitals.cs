@@ -2,9 +2,12 @@ using UnityEngine;
 
 public class Vitals : MonoBehaviour
 {
-    [SerializeField] private float maxHealth = 100f;
+    [SerializeField] public float maxHealth = 100f;
 
-    private float health;
+    public float health;
+
+    public delegate void EntityDied();
+    public event EntityDied OnDied;
 
     private void Start()
     {
@@ -17,6 +20,6 @@ public class Vitals : MonoBehaviour
 
         health = Mathf.Max(health - damage, 0);
 
-        Debug.Log("Took Damage! " + damage);
+        OnDied?.Invoke();
     }
 }

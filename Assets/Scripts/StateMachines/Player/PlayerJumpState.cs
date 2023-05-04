@@ -23,7 +23,7 @@ public class PlayerJumpState : PlayerBaseState
             stateMachine.SwitchState(new PlayerFallState(stateMachine));
         }
         
-        CalculateMoveDirection();
+        CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceMoveDirection();
         Move();
     }

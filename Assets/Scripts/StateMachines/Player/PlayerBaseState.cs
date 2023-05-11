@@ -11,10 +11,12 @@ public abstract class PlayerBaseState : State
 
     protected void CalculateMoveDirection(float moveSpeed)
     {
-        Vector3 cameraForward = new(stateMachine.MainCamera.forward.x, 0, stateMachine.MainCamera.forward.z);
-        Vector3 cameraRight = new(stateMachine.MainCamera.right.x, 0, stateMachine.MainCamera.right.z);
+        var forward = stateMachine.MainCamera.forward;
+        Vector3 cameraForward = new(forward.x, 0, forward.z);
+        var right = stateMachine.MainCamera.right;
+        Vector3 cameraRight = new(right.x, 0, right.z);
 
-        Vector3 moveDirection = cameraForward.normalized * stateMachine.InputReader.MoveComposite.y + cameraRight.normalized * stateMachine.InputReader.MoveComposite.x;
+        var moveDirection = cameraForward.normalized * stateMachine.InputReader.MoveComposite.y + cameraRight.normalized * stateMachine.InputReader.MoveComposite.x;
 
         stateMachine.Velocity.x = moveDirection.x * moveSpeed;
         stateMachine.Velocity.z = moveDirection.z * moveSpeed;
@@ -43,24 +45,23 @@ public abstract class PlayerBaseState : State
         stateMachine.Controller.Move((stateMachine.Velocity + stateMachine.ForceReciever.Forces) * Time.deltaTime);
     }
 
-    public void CheckForInteractable()
+    protected void CheckForInteractable()
     {
-        Ray ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
+        if (Camera.main == null) return;
+        var ray = Camera.main.ViewportPointToRay(new Vector3(0.5f, 0.5f, 0f));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 100))
+        if (!Physics.Raycast(ray, out var hit, 100)) return;
+        if (hit.collider.TryGetComponent<Interactable>(out var interactable))
         {
-            if (hit.collider.TryGetComponent<Interactable>(out var interactable))
-            {
-                SetFocus(interactable);
-            }
-            else
-            {
-                RemoveFocus();
-            }
+            SetFocus(interactable);
+        }
+        else
+        {
+            RemoveFocus();
         }
     }
 
-    void SetFocus(Interactable newFocus)
+    private void SetFocus(Interactable newFocus)
     {
         if (newFocus != stateMachine.focus)
         {
@@ -75,7 +76,7 @@ public abstract class PlayerBaseState : State
         newFocus?.OnFocused(stateMachine.transform);
     }
 
-    void RemoveFocus()
+    private void RemoveFocus()
     {
         if (stateMachine.focus != null)
         {
@@ -85,7 +86,7 @@ public abstract class PlayerBaseState : State
         stateMachine.focus = null;
     }
 
-    public void FaceTargetDirection()
+    protected void FaceTargetDirection()
     {
         if(stateMachine.Targeter.currentTarget == null) { return; }
 
@@ -118,5 +119,10 @@ public abstract class PlayerBaseState : State
         {
             stateMachine.SwitchState(new PlayerTargetingState(stateMachine));
         }
+    }
+
+    public void SwitchToSprintState()
+    {
+        stateMachine.SwitchState(new PlayerSprintState(stateMachine));
     }
 }

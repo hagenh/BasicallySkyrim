@@ -13,19 +13,11 @@ public class Crosshair : MonoBehaviour
 
     void Update()
     {
-        RaycastHit hit;
-        float distance;
-        if (Physics.Raycast(targetCamera.transform.position, targetCamera.transform.forward, out hit, Mathf.Infinity, raycastLayerMask))
-        {
-            distance = hit.distance;
-        }
-        else
-        {
-            distance = defaultDistance;
-        }
+        var transform1 = targetCamera.transform;
+        var distance = Physics.Raycast(transform1.position, transform1.forward, out var hit, Mathf.Infinity, raycastLayerMask) ? hit.distance : defaultDistance;
 
-        float scaleDistance = Vector3.Distance(transform.position, targetCamera.transform.position);
-        float scaleFactor = scaleDistance / baseDistance;
+        var scaleDistance = Vector3.Distance(transform.position, targetCamera.transform.position);
+        var scaleFactor = scaleDistance / baseDistance;
         transform.localScale = baseScale * scaleFactor * Vector3.one;
 
         transform.position = targetCamera.ViewportToWorldPoint(new Vector3(0.5f, 0.5f, distance));

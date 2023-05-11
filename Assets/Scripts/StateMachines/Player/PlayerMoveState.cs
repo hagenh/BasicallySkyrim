@@ -20,6 +20,8 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine.InputReader.OnInteractPerformed += CheckForInteractable;
         stateMachine.InputReader.OnTargetPerformed += SwitchToTargetingState;
         stateMachine.InputReader.OnCrouchPerformed += SwitchToCrouchState;
+        stateMachine.InputReader.OnCrouchPerformed += SwitchToCrouchState;
+        stateMachine.InputReader.OnSprintPerformed += SwitchToSprintState;
     }
 
     public override void Tick()
@@ -48,6 +50,7 @@ public class PlayerMoveState : PlayerBaseState
         stateMachine.InputReader.OnJumpPerformed -= SwitchToJumpState;
         stateMachine.InputReader.OnInteractPerformed -= CheckForInteractable;
         stateMachine.InputReader.OnTargetPerformed -= SwitchToTargetingState;
+        stateMachine.InputReader.OnCrouchPerformed += SwitchToCrouchState;
     }
 
 }

@@ -42,7 +42,23 @@ public class PlayerMoveState : PlayerBaseState
         FaceMoveDirection();
         Move();
 
-        stateMachine.Animator.SetFloat(MoveSpeedHash, stateMachine.InputReader.MoveComposite.sqrMagnitude > 0 ? 1f : 0, AnimationDampTime, Time.deltaTime);
+        var moveInput = stateMachine.InputReader.MoveComposite.sqrMagnitude;
+
+        float moveSpeed = 0;
+        if(moveInput > 0 && moveInput < 1)
+        {
+            moveSpeed = 1f;
+        }
+        else if(moveInput >= 1)
+        {
+            moveSpeed = 2f;
+        }
+        else
+        {
+            moveSpeed = 0;
+        }
+
+        stateMachine.Animator.SetFloat(MoveSpeedHash, moveSpeed, AnimationDampTime, Time.deltaTime);
     }
 
     public override void Exit()

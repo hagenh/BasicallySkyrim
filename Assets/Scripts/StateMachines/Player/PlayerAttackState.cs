@@ -10,9 +10,9 @@ public class PlayerAttackState : PlayerBaseState
     private bool alreadyAppliedForce;
     private float previousFrameTime;
 
-    public PlayerAttackState(PlayerStateMachine stateMachine, int AttackIndex) : base(stateMachine) 
+    public PlayerAttackState(PlayerStateMachine stateMachine, int attackIndex) : base(stateMachine) 
     {
-        Attack = stateMachine.Attacks[AttackIndex];
+        Attack = stateMachine.Attacks[attackIndex];
     }
 
     public override void Enter()
@@ -26,6 +26,7 @@ public class PlayerAttackState : PlayerBaseState
         ApplyGravity();
         CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceTargetDirection();
+        
         stateMachine.Controller.Move((stateMachine.Velocity / 4 + stateMachine.ForceReciever.Forces) * Time.deltaTime);
 
         float normalizedTime = GetNormalizedAnimationTime();
@@ -74,27 +75,24 @@ public class PlayerAttackState : PlayerBaseState
 
     private float GetNormalizedAnimationTime()
     {
-        AnimatorStateInfo currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
-        AnimatorStateInfo nextInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0);
+        var currentInfo = stateMachine.Animator.GetCurrentAnimatorStateInfo(0);
+        var nextInfo = stateMachine.Animator.GetNextAnimatorStateInfo(0);
 
         if (stateMachine.Animator.IsInTransition(0) && nextInfo.IsTag("Attack"))
         {
             return nextInfo.normalizedTime;
         }
-        else if (!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
+        if (!stateMachine.Animator.IsInTransition(0) && currentInfo.IsTag("Attack"))
         {
             return currentInfo.normalizedTime;
         }
-        else
-        {
-            return 0f;
-        }
 
+        return 0f;
     }
 
     private void TryApplyForce()
     {
-        if(alreadyAppliedForce) { return; };
+        if(alreadyAppliedForce) { return; }
 
         stateMachine.ForceReciever.AddForce(stateMachine, stateMachine.transform.forward * Attack.Force);
 

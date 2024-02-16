@@ -9,6 +9,12 @@ public class HealthBar : MonoBehaviour
 
     private void Update()
     {
+        if(vitals == null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+        
         // Update the health bar's color and position based on the enemy's health
         float fillAmount = vitals.health / vitals.maxHealth;
         healthBar.fillAmount = fillAmount;

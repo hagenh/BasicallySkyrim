@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.3069224, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -12924,6 +12924,10 @@ PrefabInstance:
     - target: {fileID: 4309427347347697727, guid: cd6e42e95ba730d4c9d2d13a0ac51eb4, type: 3}
       propertyPath: m_Name
       value: Character_Viking 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4309427347347697727, guid: cd6e42e95ba730d4c9d2d13a0ac51eb4, type: 3}
+      propertyPath: m_TagString
+      value: Untagged
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd6e42e95ba730d4c9d2d13a0ac51eb4, type: 3}

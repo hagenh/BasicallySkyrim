@@ -3,6 +3,7 @@ using UnityEngine;
 public abstract class PlayerBaseState : State
 {
     protected readonly PlayerStateMachine stateMachine;
+    private Vector3 targetDirection;
 
     protected PlayerBaseState(PlayerStateMachine stateMachine)
     {
@@ -18,6 +19,9 @@ public abstract class PlayerBaseState : State
 
         stateMachine.Velocity.x = moveDirection.x * moveSpeed;
         stateMachine.Velocity.z = moveDirection.z * moveSpeed;
+
+        targetDirection = moveDirection;
+
     }
 
     protected void FaceMoveDirection()
@@ -34,7 +38,7 @@ public abstract class PlayerBaseState : State
     {
         if(stateMachine.Velocity.y > Physics.gravity.y)
         {
-            stateMachine.Velocity.y += Physics.gravity.y * Time.deltaTime;
+            stateMachine.Velocity.y += Physics.gravity.y * 2 * Time.deltaTime;
         }
     }
 
@@ -87,9 +91,14 @@ public abstract class PlayerBaseState : State
 
     public void FaceTargetDirection()
     {
-        if(stateMachine.Targeter.currentTarget == null) { return; }
 
-        Vector3 faceDirection = stateMachine.Targeter.currentTarget.transform.position - stateMachine.transform.position;
+        Vector3 faceDirection = targetDirection;
+
+        if (stateMachine.Targeter.currentTarget is not null)
+        {
+            faceDirection = stateMachine.Targeter.currentTarget.transform.position - stateMachine.transform.position;
+        }
+
         faceDirection.y = 0f;
 
         if (faceDirection == Vector3.zero) {  return; }

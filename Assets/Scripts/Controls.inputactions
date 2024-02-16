@@ -225,7 +225,7 @@
                 {
                     "name": "",
                     "id": "2870bcee-86f9-4f58-a69f-64ce459654a2",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -236,7 +236,7 @@
                 {
                     "name": "",
                     "id": "b24b937f-3b8d-4b7a-845f-36fe0dc58e6a",
-                    "path": "<Keyboard>/backquote",
+                    "path": "<Keyboard>/tab",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard and Mouse",
@@ -247,7 +247,7 @@
                 {
                     "name": "",
                     "id": "433737c2-98cb-413f-bfb4-a1fed501a94d",
-                    "path": "<Gamepad>/leftShoulder",
+                    "path": "<Gamepad>/rightStickPress",
                     "interactions": "",
                     "processors": "",
                     "groups": "Gamepad",
@@ -291,7 +291,7 @@
                 {
                     "name": "",
                     "id": "dc8170d9-f67c-4916-916f-fe64b5a1c757",
-                    "path": "<Gamepad>/leftTrigger",
+                    "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "",

@@ -26,8 +26,8 @@ public class PlayerAttackState : PlayerBaseState
         ApplyGravity();
         CalculateMoveDirection(stateMachine.MovementSpeed);
         FaceTargetDirection();
-        Move();
-        
+        stateMachine.Controller.Move((stateMachine.Velocity / 4 + stateMachine.ForceReciever.Forces) * Time.deltaTime);
+
         float normalizedTime = GetNormalizedAnimationTime();
 
         if (normalizedTime >= previousFrameTime && normalizedTime < 1f)
